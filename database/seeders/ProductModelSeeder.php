@@ -18,88 +18,144 @@ class ProductModelSeeder extends Seeder
         //
         DB::table('product_models')->insert([
             [
-                'name'                  => 'MIRROR',
-                'model_number'          => 'NS14A14567',
-                'products_id'           => '5',
+                "name"              => null,
+                "model_number"      => "NS14L001",
+                "products_id"       => "1",
+                "created_at"        => "2022-04-18 10:03:30",
+                "updated_at"        => "2022-04-18 10:03:30"
             ],
             [
-                'name'                  => 'MIRROR',
-                'model_number'          => 'NS14A2099',
-                'products_id'           => '5',
+                "name"              => null,
+                "model_number"      => "NS14L002",
+                "products_id"       => "1",
+                "created_at"        => "2022-04-18 10:03:35",
+                "updated_at"        => "2022-04-18 10:03:35"
             ],
             [
-                'name'                  => 'MIRROR',
-                'model_number'          => 'NS14A200567889',
-                'products_id'           => '5',
+                "name"              => null,
+                "model_number"      => "NS14P001",
+                "products_id"       => "2",
+                "created_at"        => "2022-04-18 10:04:00",
+                "updated_at"        => "2022-04-18 10:04:00"
             ],
             [
-                'name'                  => 'MIRROR',
-                'model_number'          => 'NS14A23SDGHH',
-                'products_id'           => '5',
+                "name"              => null,
+                "model_number"      => "NS14P002",
+                "products_id"       => "2",
+                "created_at"        => "2022-04-18 10:04:08",
+                "updated_at"        => "2022-04-18 10:04:08"
             ],
             [
-                'name'                  => 'MOUSE',
-                'model_number'          => 'NS14A1FGHSAF',
-                'products_id'           => '6',
+                "name"              => null,
+                "model_number"      => "COSMOS001",
+                "products_id"       => "3",
+                "created_at"        => "2022-04-18 10:04:25",
+                "updated_at"        => "2022-04-18 10:04:25"
             ],
             [
-                'name'                  => 'MOUSE',
-                'model_number'          => 'MDS14A4FJASEFA',
-                'products_id'           => '6',
+                "name"              => null,
+                "model_number"      => "COSMOS002",
+                "products_id"       => "3",
+                "created_at"        => "2022-04-18 10:04:33",
+                "updated_at"        => "2022-04-18 10:04:33"
             ],
             [
-                'name'                  => 'MOUSE',
-                'model_number'          => 'MDS14A4SASDFVZ',
-                'products_id'           => '6',
+                "name"              => null,
+                "model_number"      => "NS14E001",
+                "products_id"       => "4",
+                "created_at"        => "2022-04-18 10:04:46",
+                "updated_at"        => "2022-04-18 10:04:46"
             ],
             [
-                'name'                  => 'MOUSE',
-                'model_number'          => 'MDS14A4SA3425',
-                'products_id'           => '6',
+                "name"              => null,
+                "model_number"      => "NS14E002",
+                "products_id"       => "4",
+                "created_at"        => "2022-04-18 10:04:52",
+                "updated_at"        => "2022-04-18 10:04:52"
             ],
             [
-                'name'                  => 'LAPTOP CHARGER ',
-                'model_number'          => 'MDS14A4889DSCSD',
-                'products_id'           => '7',
+                "name"              => null,
+                "model_number"      => "IMAGO001",
+                "products_id"       => "7",
+                "created_at"        => "2022-04-18 10:05:32",
+                "updated_at"        => "2022-04-18 10:05:32"
             ],
             [
-                'name'                  => 'LAPTOP CHARGER ',
-                'model_number'          => 'MDS14A4343424',
-                'products_id'           => '7',
-            ],[
-                'name'                  => 'LAPTOP CHARGER ',
-                'model_number'          => 'MDS14A4366ZXVZ',
-                'products_id'           => '7',
+                "name"              => null,
+                "model_number"      => "IMAGO002",
+                "products_id"       => "7",
+                "created_at"        => "2022-04-18 10:05:39",
+                "updated_at"        => "2022-04-18 10:05:39"
             ],
             [
-                'name'                  => 'SLEEVE',
-                'model_number'          => 'MDS14A43422AFS',
-                'products_id'           => '8',
+                "name"              => null,
+                "model_number"      => "MODUS001",
+                "products_id"       => "8",
+                "created_at"        => "2022-04-18 10:05:52",
+                "updated_at"        => "2022-04-18 10:05:52"
             ],
             [
-                'name'                  => 'SLEEVE',
-                'model_number'          => 'MDS14A4342MM',
-                'products_id'           => '8',
+                "name"              => null,
+                "model_number"      => "MODUS002",
+                "products_id"       => "8",
+                "created_at"        => "2022-04-18 10:05:58",
+                "updated_at"        => "2022-04-18 10:05:58"
             ],
             [
-                'name'                  => 'DOMUS BULB',
-                'model_number'          => 'MDS14A4342MM6789',
-                'products_id'           => '9',
+                "name"              => null,
+                "model_number"      => "SLEEVE001",
+                "products_id"       => "5",
+                "created_at"        => "2022-04-18 10:06:38",
+                "updated_at"        => "2022-04-18 10:06:38"
             ],
             [
-                'name'                  => 'DOMUS BULB',
-                'model_number'          => 'MDS14A4342MM1231',
-                'products_id'           => '9',
+                "name"              => null,
+                "model_number"      => "SLEEVE002",
+                "products_id"       => "5",
+                "created_at"        => "2022-04-18 10:06:44",
+                "updated_at"        => "2022-04-18 10:06:44"
             ],
             [
-                'name'                  => 'DOMUS LED',
-                'model_number'          => 'MDS14A4342MM123121',
-                'products_id'           => '10',
+                "name"              => null,
+                "model_number"      => "MOUSE001",
+                "products_id"       => "6",
+                "created_at"        => "2022-04-18 10:06:57",
+                "updated_at"        => "2022-04-18 10:06:57"
             ],
             [
-                'name'                  => 'DOMUS LED',
-                'model_number'          => 'MDS14A4342MM123121414',
-                'products_id'           => '10',
+                "name"              => null,
+                "model_number"      => "MOUSE002",
+                "products_id"       => "6",
+                "created_at"        => "2022-04-18 10:07:02",
+                "updated_at"        => "2022-04-18 10:07:02"
+            ],
+            [
+                "name"              => null,
+                "model_number"      => "DOMBULB001",
+                "products_id"       => "9",
+                "created_at"        => "2022-04-18 10:07:28",
+                "updated_at"        => "2022-04-18 10:07:28"
+            ],
+            [
+                "name"              => null,
+                "model_number"      => "DOMBULB002",
+                "products_id"       => "9",
+                "created_at"        => "2022-04-18 10:07:36",
+                "updated_at"        => "2022-04-18 10:07:36"
+            ],
+            [
+                "name"              => null,
+                "model_number"      => "DOMLED001",
+                "products_id"       => "10",
+                "created_at"        => "2022-04-18 10:07:52",
+                "updated_at"        => "2022-04-18 10:07:52"
+            ],
+            [
+                "name"              => null,
+                "model_number"      => "DOMLED002",
+                "products_id"       => "10",
+                "created_at"        => "2022-04-18 10:08:00",
+                "updated_at"        => "2022-04-18 10:08:00"
             ],
         ]);
     }

@@ -17,7 +17,7 @@ return [
     'admin_product_registration'                     => 'AVITA | ADMIN | PRODUCT | REGISTRATION',
     'admin_product'                                  => 'AVITA | ADMIN | PRODUCTS',
     'admin_product_warranty_registration'            => 'AVITA | ADMIN | PRODUCTS | WARRANTY | REGISTRATION',
-    'product_warranty_extend'                        => 'AVITA | ADMIN | PRODUCTS | WARRANTY | EXTEND',
+    'admin_product_warranty_extend'                  => 'AVITA | ADMIN | PRODUCTS | WARRANTY | EXTEND',
     'admin_profile'                                  => 'AVITA | ADMIN | PROFILE | SETTINGS',
 
     // User
@@ -25,9 +25,10 @@ return [
     'user'                                           => 'AVITA | CUSTOMER | DASHBOARD',
     'profile'                                        => 'AVITA | CUSTOMER | PROFILE',
     'password_change'                                => 'AVITA | CUSTOMER | PASSWORD | CHANGE',
-    'my_product'                                     => 'AVITA | MY PRODUCT',
-    'product_warranty_registration'                  => 'AVITA | PRODUCT | WARRANTY | REGISTRATION',
-    'contact'                                        => 'AVITA | CONTACT US',
+    'my_product'                                     => 'AVITA | CUSTOMER | MY PRODUCT',
+    'product_warranty_registration'                  => 'AVITA | CUSTOMER | RODUCT | WARRANTY | REGISTRATION',
+    'product_warranty_extend'                        => 'AVITA | CUSTOMER | PRODUCTS | WARRANTY | EXTEND',
+    'contact'                                        => 'AVITA | CUSTOMER | CONTACT US',
 
 
 ];

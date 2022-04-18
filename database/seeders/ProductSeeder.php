@@ -17,55 +17,76 @@ class ProductSeeder extends Seeder
         //
         DB::table('products')->insert([
             [
-                'name' => 'LIBER',
-                'product_types_id' => 1,
-                'extra_warranty' => 1,
+                "name"                   => "LIBER",
+                "product_types_id"       => "1",
+                "extra_warranty"         => "0",
+                "created_at"             => "2022-04-18 08:21:43",
+                "updated_at"             => "2022-04-18 08:21:43"
             ],
             [
-                'name' => 'PURA',
-                'product_types_id' => 1,
-                'extra_warranty' => 1,
+                "name"                   => "PURA",
+                "product_types_id"       => "1",
+                "extra_warranty"         => "0",
+                "created_at"             => "2022-04-18 08:21:49",
+                "updated_at"             => "2022-04-18 08:21:49"
             ],
             [
-                'name' => 'PURA E',
-                'product_types_id' => 1,
-                'extra_warranty' => 1,
+                "name"                   => "COSMOS 2-in-1",
+                "product_types_id"       => "1",
+                "extra_warranty"         => "0",
+                "created_at"             => "2022-04-18 08:22:22",
+                "updated_at"             => "2022-04-18 08:22:22"
             ],
             [
-                'name' => 'COSMOS 2-in-1',
-                'product_types_id' => 1,
-                'extra_warranty' => 1,
+                "name"                   => "ESSENTIAL",
+                "product_types_id"       => "1",
+                "extra_warranty"         => "0",
+                "created_at"             => "2022-04-18 08:23:02",
+                "updated_at"             => "2022-04-18 08:23:02"
             ],
             [
-                'name' => 'MOUSE I',
-                'product_types_id' => 2,
-                'extra_warranty' => 0,
+                "name"                   => "SLEEVE",
+                "product_types_id"       => "3",
+                "extra_warranty"         => "0",
+                "created_at"             => "2022-04-18 08:23:38",
+                "updated_at"             => "2022-04-18 08:23:38"
             ],
             [
-                'name' => 'MOUSE II',
-                'product_types_id' => 2,
-                'extra_warranty' => 0,
+                "name"                   => "MOUSE",
+                "product_types_id"       => "3",
+                "extra_warranty"         => "0",
+                "created_at"             => "2022-04-18 08:23:51",
+                "updated_at"             => "2022-04-18 08:23:51"
             ],
             [
-                'name'          => 'MOUSE',
-                'product_types_id'   => 3,
-                'extra_warranty' => 0,
+                "name"                   => "IMAGO",
+                "product_types_id"       => "2",
+                "extra_warranty"         => "0",
+                "created_at"             => "2022-04-18 08:25:01",
+                "updated_at"             => "2022-04-18 08:25:01"
             ],
             [
-                'name'          => 'MOUSE',
-                'product_types_id'   => 3,
-                'extra_warranty' => 0,
+                "name"                   => "MODUS",
+                "product_types_id"       => "2",
+                "extra_warranty"         => "0",
+                "created_at"             => "2022-04-18 08:25:29",
+                "updated_at"             => "2022-04-18 08:25:29"
             ],
             [
-                'name'          => 'DOMUS BULB',
-                'product_types_id'   => 4,
-                'extra_warranty' => 0,
+                "name"                   => "DOMUS BULB",
+                "product_types_id"       => "4",
+                "extra_warranty"         => "0",
+                "created_at"             => "2022-04-18 08:26:05",
+                "updated_at"             => "2022-04-18 08:26:05"
             ],
             [
-                'name'          => 'DOMUS LED',
-                'product_types_id'   => 4,
-                'extra_warranty' => 0,
-            ],
+                "name"                   => "DOMUS LED",
+                "product_types_id"       => "4",
+                "extra_warranty"         => "0",
+                "created_at"             => "2022-04-18 08:26:12",
+                "updated_at"             => "2022-04-18 08:26:12"
+            ]
+
         ]);
     }
 }

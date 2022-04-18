@@ -34,44 +34,39 @@ Auth::routes();
 
 // Dashboard
 Route::get('/', [UserController::class, 'index']);
-Route::get('/user', [UserController::class, 'index'])->name('home');
+Route::get('/customer', [UserController::class, 'index'])->name('home');
 
 // Profile
-Route::get('user/profile', [UserController::class, 'profile'])->name('profile');
-Route::post('user/profile/profilesave', [UserController::class, 'profilesave'])->name('profilesave');
+Route::get('customer/profile', [UserController::class, 'profile'])->name('profile');
+Route::post('customer/profile/profilesave', [UserController::class, 'profilesave'])->name('profilesave');
 
 // Password Change
-Route::get('user/password-change', [UserController::class, 'changePassword'])->name('change-password');
-Route::post('user/password-change/store', [UserController::class, 'changePasswordSave'])->name('user.changePassword');
+Route::get('customer/password-change', [UserController::class, 'changePassword'])->name('change-password');
+Route::post('customer/password-change/store', [UserController::class, 'changePasswordSave'])->name('user.changePassword');
 
 // Register Product
-Route::get('user/my-product', [UserController::class, 'myProduct'])->name('my-product');
+Route::get('customer/my-product', [UserController::class, 'myProduct'])->name('my-product');
 
 // Product Registration
-Route::get('user/product-registration', [UserController::class, 'productRegistration'])->name('product-registration');
-Route::post('user/product-registration/store', [UserController::class, 'productRegistrationStore'])->name('productRegistrationStore.store');
+Route::get('customer/product-registration', [UserController::class, 'productRegistration'])->name('product-registration');
+Route::post('customer/product-registration/store', [UserController::class, 'productRegistrationStore'])->name('productRegistrationStore.store');
 
 // Product Extend
-Route::get('user/product-extend', [UserController::class, 'productExtend'])->name('product-extend');
-Route::post('user/product-extend/store', [UserController::class, 'productExtendStore'])->name('productExtendStore.store');
-Route::get('user/product-extend//search', [UserController::class, 'productExtendStore']);
+Route::get('customer/product-extend', [UserController::class, 'productExtend'])->name('product-extend');
+Route::post('customer/product-extend/store', [UserController::class, 'productExtendStore'])->name('productExtendStore.store');
+Route::get('customer/product-extend//search', [UserController::class, 'productExtendStore']);
 
 // test
 // Route::post('user/product-extend/store', [UserController::class, 'productExtendStores'])->name('productExtendStores.store');
 
 // ContactUS
-Route::get('user/contactUS', [UserController::class, 'contactUS'])->name('contactus');
+Route::get('customer/contactUS', [UserController::class, 'contactUS'])->name('contactus');
 
 
 Route::post('/getpurchaseCodeID', [UserController::class, 'getpurchaseCodeID']);
 
 
-
-
-
-
 // Route::get('/', [HomeController::class,'indexx']);
-
 Route::post('/getproductseries', [AdminController::class, 'getproductseries']);
 Route::post('/getproductmodel', [AdminController::class, 'getproductmodel']);
 Route::post('/getproductnumber', [AdminController::class, 'getproductnumber']);
@@ -80,30 +75,62 @@ Route::post('/getproductConfiguration', [AdminController::class, 'getproductConf
 
 // Admin
 Route::get('admin', [AdminController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+
+// Admin Profile
 Route::get('admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+
+// Admin Profile Update
 Route::post('admin/profile/profilesave', [AdminController::class, 'adminProfilesave'])->name('admin.profilesave');
+
+// Admin Password Change
 Route::post('changePassword', [AdminController::class, 'changePasswordSave'])->name('changePassword');
-Route::get('admin/user', [AdminController::class, 'user'])->name('user');
+
+// All User
+Route::get('admin/customers', [AdminController::class, 'user'])->name('user');
+
+// All Warranty Registration
 Route::get('admin/warranty-registration', [AdminController::class, 'warrantyRegistration'])->name('warranty-registration');
 
+// All Warranty Registration
+Route::get('admin/warranty-extend', [AdminController::class, 'warrantyExtend'])->name('warranty-extend');
 
-Route::resource('admin/products', App\Http\Controllers\App\Http\Controllers\ProductController::class);
+// Product CURD
+
+// Route::resource('admin/products', App\Http\Controllers\App\Http\Controllers\ProductController::class);
+
+// Product All
 
 Route::get('admin/products/', [ProductController::class, 'index'])->name('products.index');
+
+// Product Create
 Route::get('admin/products/create/', [ProductController::class, 'create'])->name('products.create');
 
-
+// Product Type Create
 Route::get('admin/products/create/product-type', [ProductController::class, 'createproductTypes'])->name('product.add');
+
+// Product Type store
 Route::post('admin/products/create/product-type/store', [ProductController::class, 'productTypestore'])->name('product.store');
 
+// Product Series Create
 Route::get('admin/products/create/series', [ProductController::class, 'productSeries'])->name('create.series');
+
+// Product Series Store
 Route::post('admin/products/create/series/store', [ProductController::class, 'productSeriesstore'])->name('series.store');
 
+// Product Model Create
 Route::get('admin/products/create/model', [ProductController::class, 'productModelsCreate'])->name('create.model');
+
+// Product Model Store
 Route::post('admin/products/create/model/store', [ProductController::class, 'productModelsStore'])->name('model.store');
 
+// Product Number Create
 Route::get('admin/products/create/number', [ProductController::class, 'productNumberCreate'])->name('create.number');
+
+// Product Number Store
 Route::post('admin/products/create/number/store', [ProductController::class, 'productNumberStore'])->name('number.store');
 
+// Product configuration Create
 Route::get('admin/products/create/configuration', [ProductController::class, 'productConfigurationCreate'])->name('create.configuration');
+
+// Product configuration Store
 Route::post('admin/products/create/configuration/store', [ProductController::class, 'productConfigurationStore'])->name('configuration.store');

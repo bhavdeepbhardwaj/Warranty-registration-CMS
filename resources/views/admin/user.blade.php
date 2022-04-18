@@ -27,7 +27,7 @@
                 <!-- Recent Order Table -->
                 <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
                     <div class="card-header justify-content-between">
-                        <h2>Users</h2>
+                        <h2>Customers</h2>
                         <div class="date-range-report">
                             <span></span>
                         </div>
@@ -37,10 +37,10 @@
                             style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>User ID</th>
-                                    <th>Name</th>
+                                    <th>Customer ID</th>
+                                    <th>Customer Name</th>
                                     <th class="d-none d-lg-table-cell">Email</th>
-                                    <th>Status</th>
+                                    <th>Customer Status</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -56,7 +56,7 @@
                                         @if (( $user->is_admin ) == 1)
                                             <span class="badge badge-success">Admin</span>
                                         @elseif(( $user->is_admin ) == 0)
-                                            <span class="badge bg-primary">User</span>
+                                            <span class="badge bg-primary">Customer</span>
                                         @endif
                                     </td>
                                     <td class="text-right">

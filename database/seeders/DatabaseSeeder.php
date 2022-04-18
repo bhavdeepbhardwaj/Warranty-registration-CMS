@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             CreateUsersSeeder::class,
             ProductModelSeeder::class,
             ProductNumberSeeder::class,
+            WarrantyCodesSeeder::class,
         ]);
     }
 }

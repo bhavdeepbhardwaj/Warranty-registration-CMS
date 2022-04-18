@@ -33,7 +33,7 @@
                 <li>
                     <a class="sidenav-item-link" href="{{ route('user') }}">
                         <i class="mdi mdi-account-group"></i>
-                        <span class="nav-text">Users</span>
+                        <span class="nav-text">Customers</span>
                     </a>
                 </li>
 
@@ -59,13 +59,22 @@
                     </div>
                 </li>
 
-                <!-- Users -->
+                <!-- Warranty Registration -->
                 <li>
                     <a class="sidenav-item-link" href="{{ route('warranty-registration') }}">
                         <i class="mdi mdi-security"></i>
                         <span class="nav-text">Warranty Registration</span>
                     </a>
                 </li>
+
+                <!-- Warranty Extend -->
+                <li>
+                    <a class="sidenav-item-link" href="{{ route('warranty-extend') }}">
+                        <i class="mdi mdi-security"></i>
+                        <span class="nav-text">Warranty Extend</span>
+                    </a>
+                </li>
+
             </ul>
         </div>
     </div>

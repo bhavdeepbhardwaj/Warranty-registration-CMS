@@ -17,18 +17,18 @@ class CreateUsersSeeder extends Seeder
         //
         $user = [
             [
-               'name'=>'Admin',
-               'last_name'=>'',
-               'email'=>'admin@avita.com',
-                'is_admin'=>'1',
-               'password'=> bcrypt('Admin@123'),
+               'name'           =>'Admin',
+               'last_name'      =>'',
+               'email'          =>'admin@avita.com',
+                'is_admin'      =>'1',
+               'password'       => bcrypt('Admin@123'),
             ],
             [
-               'name'=>'User',
-               'last_name'=>'',
-               'email'=>'user@avita.com',
-                'is_admin'=>'0',
-               'password'=> bcrypt('User@123'),
+               'name'           =>'User',
+               'last_name'      =>'',
+               'email'          =>'user@avita.com',
+                'is_admin'      =>'0',
+               'password'       => bcrypt('User@123'),
             ],
         ];
 

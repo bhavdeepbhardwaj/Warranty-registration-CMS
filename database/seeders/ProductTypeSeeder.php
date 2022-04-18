@@ -16,18 +16,26 @@ class ProductTypeSeeder extends Seeder
     public function run()
     {
         //
-    DB::table('product_types')->insert([
+        DB::table('product_types')->insert([
             [
-                'name'          => 'Notebook',
+                "name"          => 'Notebook',
+                "created_at"    => '2022-03-18 07:17:09',
+                "updated_at"    => '2022-03-18 07:17:09',
             ],
             [
-                'name'          => 'Smart Devices',
+                "name"          => 'Smart Devices',
+                "created_at"    => '2022-03-18 07:17:09',
+                "updated_at"    => '2022-03-18 07:17:09',
             ],
             [
-                'name'          => 'Accessories',
+                "name"          => 'Accessories',
+                "created_at"    => '2022-03-18 07:17:09',
+                "updated_at"    => '2022-03-18 07:17:09',
             ],
             [
-                'name'          => 'Convertible',
+                "name"          => 'Convertible',
+                "created_at"    => '2022-03-18 07:17:09',
+                "updated_at"    => '2022-03-18 07:17:09',
             ],
         ]);
     }

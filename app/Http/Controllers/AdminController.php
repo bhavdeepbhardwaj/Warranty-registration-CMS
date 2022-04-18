@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\Warranty_registration;
+use App\Models\Warranty_extend;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -97,6 +98,14 @@ class AdminController extends Controller
         $warranty_registration = Warranty_registration::all();
         return view('admin.warranty-registration',['warranty_registration'=>$warranty_registration]);
     }
+
+     // Warranty Extend
+
+     public function warrantyExtend()
+     {
+         $warranty_extend = Warranty_extend::all();
+         return view('admin.warranty-Extend',['warranty_extend'=>$warranty_extend]);
+     }
 
     // All User
 

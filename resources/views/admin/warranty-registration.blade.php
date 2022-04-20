@@ -1,14 +1,15 @@
 @extends('admin.layouts.app')
+
 @section('title')
     @lang('title.admin_product_warranty_registration')
 @stop
+
 @section('css')
     <!-- No Extra plugin used -->
     <link href="{{ asset('assets/plugins/data-tables/datatables.bootstrap5.min.css') }}" rel='stylesheet'>
     <link href="{{ asset('assets/plugins/data-tables/responsive.datatables.min.css') }}" rel='stylesheet'>
-    <style>
-    </style>
 @endsection
+
 @section('content')
     <!-- CONTENT WRAPPER -->
     <div class="ec-content-wrapper">
@@ -42,6 +43,7 @@
                                             <th>Product Purchase Date</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
                                         @foreach ($warranty_registration as $wr)
                                             <tr>
@@ -67,22 +69,6 @@
                                                 <td class="">{{ $wr->serial_number }}</td>
                                                 <td class="">{{ $wr->reseller_name }}</td>
                                                 <td class="">{{ $wr->purchase_date }}</td>
-                                                <td class="text-right">
-                                                    <div class="dropdown show d-inline-block widget-dropdown">
-                                                        <a class="dropdown-toggle icon-burger-mini" href="" role="button"
-                                                            id="dropdown-recent-order1" data-bs-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false"
-                                                            data-display="static"></a>
-                                                        <ul class="dropdown-menu dropdown-menu-right">
-                                                            <li class="dropdown-item">
-                                                                <a href="#">View</a>
-                                                            </li>
-                                                            <li class="dropdown-item">
-                                                                <a href="#">Remove</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -97,6 +83,7 @@
     </div>
     <!-- End Content Wrapper -->
 @endsection
+
 @section('js')
     <!-- Datatables -->
     <script src="{{ asset('assets/plugins/data-tables/jquery.datatables.min.js') }}"></script>

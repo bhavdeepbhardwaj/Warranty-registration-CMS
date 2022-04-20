@@ -26,11 +26,7 @@
                             <small>Items marked with an asterisk (*) must be filled out.</small><br><br>
 
                             <div class="col-lg-12">
-                                @if (session('msg'))
-                                    <div class="alert alert-success" role="alert">
-                                        {{ session('msg') }}
-                                    </div>
-                                @endif
+                                @include('component.alert')
                                 <div class="ec-vendor-upload-detail">
                                     <div class="col-md-12 ">
                                         <form action="{{ route('model.store') }}" method="POST">

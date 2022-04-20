@@ -8,10 +8,12 @@ use App\Models\ProductType;
 use App\Models\Warranty_registration;
 use App\Models\Warranty_extend;
 use App\Models\User;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AdminController extends Controller
 {
@@ -19,21 +21,32 @@ class AdminController extends Controller
 
     public function adminHome()
     {
-        return view('admin.adminHome');
+        try {
+            $users = DB::table('users')->count();
+            $warranty_registration = DB::table('warranty_registrations')->count();
+            $warranty_extend = DB::table('warranty_extends')->count();
+            $user = User::select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(created_at) as month_name"))
+                ->whereYear('created_at', date('Y'))
+                ->groupBy('month_name')
+                ->orderBy('count')
+                ->get();
+        } catch (ModelNotFoundException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
+        return view('admin.adminHome', compact('users', 'warranty_registration', 'warranty_extend', 'user'));
     }
 
     // Product Type Register
 
     public function productRegistration()
     {
-        $product_type = ProductType::all();
+        try {
+            $product_type = ProductType::all();
+        } catch (ModelNotFoundException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
         return view('user.product-registration', ['product_type' => $product_type]);
     }
-
-    // public function indexx(Request $request){
-    // 	$data['name']=DB::table('product_types')->get();
-    // 	return view('user.product-registration',$data);
-    // }
 
     // Product Series Register
 
@@ -86,7 +99,7 @@ class AdminController extends Controller
 
         $html = '';
         foreach ($productConfiguration as $list) {
-            $html .= "$list->titleName" ;
+            $html .= "$list->titleName";
         }
         echo $html;
     }
@@ -95,50 +108,85 @@ class AdminController extends Controller
 
     public function warrantyRegistration()
     {
-        $warranty_registration = Warranty_registration::all();
-        return view('admin.warranty-registration',['warranty_registration'=>$warranty_registration]);
+        try {
+            $product = DB::table('products')->join('product_types', 'product_types.id', '=', 'products.product_types_id')
+                ->join('product_models', 'product_models.products_id', '=', 'products.id')
+                ->join('product_numbers', 'product_numbers.product_model_id', '=', 'product_models.id')
+                ->select('product_types.name as type_name', 'products.name', 'product_models.model_number', 'product_numbers.product_number', 'product_numbers.titleName')->get();
+            $warranty_registration = Warranty_registration::all();
+        } catch (ModelNotFoundException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
+        return view('admin.warranty-registration', ['warranty_registration' => $warranty_registration],['product' => $product] );
     }
 
-     // Warranty Extend
+    // Warranty Extend
 
-     public function warrantyExtend()
-     {
-         $warranty_extend = Warranty_extend::all();
-         return view('admin.warranty-Extend',['warranty_extend'=>$warranty_extend]);
-     }
+    public function warrantyExtend()
+    {
+        try {
+            $warranty_extend = Warranty_extend::all();
+        } catch (ModelNotFoundException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
+        return view('admin.warranty-Extend', ['warranty_extend' => $warranty_extend]);
+    }
 
     // All User
 
     public function user()
     {
-        $user = User::all();
-        return view('admin.user',['user'=>$user]);
+        try {
+            $user = User::all();
+        } catch (ModelNotFoundException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
+        return view('admin.user', ['user' => $user]);
     }
 
     // Admin Profile
 
     public function profile()
     {
-        return view('admin.adminProfile');
+        try {
+            $user = User::where('id', Auth::user()->id)->get()->first();
+        } catch (ModelNotFoundException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
+        return view('admin.adminProfile', ['user' => $user]);
     }
 
     // Admin Profile Update
 
     public function adminProfilesave(Request $request)
     {
-        // dd($request->all());
-        User::where('id', $request->user_id)->update([
-            'last_name' => $request->last_name,
-            "phone" => $request->phone,
-            "address" => $request->address,
-            "gender" => $request->gender,
-            "postcode" => $request->postcode,
-            "country" => $request->country,
-            "state" => $request->state
+        try {
+            // dd($request->all());
 
-        ]);
+            $this->validate($request, [
+                'last_name'        => 'required',
+                'phone'            => 'required|unique:users',
+                'address'          => 'required',
+                'gender'           => 'required',
+                'postcode'         => 'required',
+                'country'          => 'required',
+                'state'            => 'required',
+            ]);
 
-        return redirect()->back()->with("success", "Admin detail is updated !");
+            User::where('id', $request->user_id)->update([
+                'last_name'     => $request->last_name,
+                "phone"         => $request->phone,
+                "address"       => $request->address,
+                "gender"        => $request->gender,
+                "postcode"      => $request->postcode,
+                "country"       => $request->country,
+                "state"         => $request->state
+            ]);
+
+            return redirect()->back()->with("success", "Admin detail is updated !");
+        } catch (ModelNotFoundException $exception) {
+            return redirect()->back()->with("error", "Something is wrong !");
+        }
     }
 
     // Admin Password Change
@@ -146,23 +194,32 @@ class AdminController extends Controller
     public function changePasswordSave(Request $request)
     {
         // dd($request->all());
-        if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
-            // The passwords matches
-            return redirect()->back()->with("error", "Your current password does not matches with the password you provided. Please try again.");
+        try {
+            $this->validate($request, [
+                'current_password'        => 'required',
+                'new_password'            => 'required',
+            ]);
+            // dd($request->all());
+            if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
+                // The passwords matches
+                return redirect()->back()->with("error", "Your current password does not matches with the password you provided. Please try again.");
+            }
+            if (strcmp($request->get('current_password'), $request->get('new_password')) == 0) {
+                //Current password and new password are same
+                return redirect()->back()->with("error", "New Password cannot be same as your current password. Please choose a different password.");
+            }
+            $validator = Validator::make($request->all(), [
+                'current_password' => 'required',
+                'new_password' => ['required|min:6'],
+                #'confirm_password' => ['same:new_password'],
+            ]);
+            //Change Password
+            $user = Auth::user();
+            $user->password = bcrypt($request->get('new_password'));
+            $user->save();
+            return redirect()->back()->with("success", "Password changed successfully !");
+        } catch (ModelNotFoundException $exception) {
+            return redirect()->back()->with("error", "Something is wrong !");
         }
-        if (strcmp($request->get('current_password'), $request->get('new_password')) == 0) {
-            //Current password and new password are same
-            return redirect()->back()->with("error", "New Password cannot be same as your current password. Please choose a different password.");
-        }
-        $validator = Validator::make($request->all(), [
-            'current_password' => 'required',
-            'new_password' => ['required|min:6'],
-            #'confirm_password' => ['same:new_password'],
-        ]);
-        //Change Password
-        $user = Auth::user();
-        $user->password = bcrypt($request->get('new_password'));
-        $user->save();
-        return redirect()->back()->with("success", "Password changed successfully !");
     }
 }

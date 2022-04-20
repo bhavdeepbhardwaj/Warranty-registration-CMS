@@ -2,9 +2,16 @@
 <div class="ec-left-sidebar ec-bg-sidebar">
     <div id="sidebar" class="sidebar ec-sidebar-footer">
 
-        <div class="m-3">
+        {{-- <div class="m-3">
             <a href="" title="AVITA India">
                 <img class="" src="{{ asset('assets/img/logo/AVITA-logo.png ') }}" alt="" />
+            </a>
+        </div> --}}
+
+        <div class="ec-brand">
+            <a href="/" title="AVITA India">
+                <img class="ec-brand-icon" src="{{ asset('assets/img/logo/AVITA-logo.png ') }}" alt="" />
+                <img class="ec-brand-name text-truncate" src="{{ asset('assets/img/logo/AVITA-logo.png ') }}" alt="" />
             </a>
         </div>
 
@@ -21,7 +28,7 @@
             <ul class="nav sidebar-inner" id="sidebar-menu">
                 <!-- Dashboard -->
                 <li class="active">
-                    <a class="sidenav-item-link" href="">
+                    <a class="sidenav-item-link" href="{{ route('admin.home')}}">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Dashboard</span>
                     </a>

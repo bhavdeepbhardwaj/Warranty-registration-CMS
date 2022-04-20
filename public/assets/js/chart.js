@@ -33,7 +33,7 @@
 
 $(document).ready(function() {
   "use strict";
-  
+
   /*======== 1. DUAL LINE CHART ========*/
   var dual = document.getElementById("dual-line");
   if (dual !== null) {
@@ -119,7 +119,7 @@ $(document).ready(function() {
       }
     });
   }
-  
+
   /*======== 1. DUAL LINE CHART2 ========*/
   var dual3 = document.getElementById("dual-line3");
   if (dual3 !== null) {
@@ -1495,7 +1495,7 @@ $(document).ready(function() {
       }
     });
   }
-  
+
   /*======== 18. HORIZONTAL BAR CHART2 ========*/
   var hbar2 = document.getElementById("hbar2");
   if (hbar2 !== null) {
@@ -2460,7 +2460,7 @@ if(typeof baremlctx !== 'undefined' && baremlctx !== null) {
               ],
               borderWidth: 1
           },
-          
+
           {
           label: '# of Votes2',
               data: [24,38, 6, 10, 4, 6],
@@ -2482,8 +2482,8 @@ if(typeof baremlctx !== 'undefined' && baremlctx !== null) {
               ],
               borderWidth: 1
           },
-      
-          
+
+
           ]
       },
       options: {
@@ -2497,7 +2497,7 @@ if(typeof baremlctx !== 'undefined' && baremlctx !== null) {
       },
 
 
-      
+
       onClick:function(e){
       /*var activePoints = myBarChart.getElementsAtEvent(e);
       var selectedIndex = activePoints[0]._index; */
@@ -2517,7 +2517,7 @@ if(typeof baremlctx !== 'undefined' && baremlctx !== null) {
   };
 }
 
-/*======== 33. Color Curve Bar Progressive Chart ========*/  
+/*======== 33. Color Curve Bar Progressive Chart ========*/
 
 var curveeml_ctx = document.getElementById("chartCurveBar");
 
@@ -2582,8 +2582,8 @@ if(typeof curveeml_ctx !== 'undefined' && curveeml_ctx !== null) {
           displayColors:false,
             titleFontColor: '#000',
           bodyFontColor: '#000'
-          
-          },      
+
+          },
         legend: {
               display: false
         },
@@ -2606,7 +2606,7 @@ if(typeof curveeml_ctx !== 'undefined' && curveeml_ctx !== null) {
   });
 }
 
-/*======== 34. Color Curve Bar Progressive Chart ========*/  
+/*======== 34. Color Curve Bar Progressive Chart ========*/
 
 // var labels = ["January", "February", "March", "April", "May", "June", "July"];
 // var getRandomValues = function() {

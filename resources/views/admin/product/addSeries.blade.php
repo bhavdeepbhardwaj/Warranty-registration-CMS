@@ -28,11 +28,7 @@
                             <div class="col-lg-12">
                                 <div class="ec-vendor-upload-detail">
                                     <div class="col-md-12 ">
-                                        @if (session('msg'))
-                                            <div class="alert alert-success" role="alert">
-                                                {{ session('msg') }}
-                                            </div>
-                                        @endif
+                                        @include('component.alert')
                                         <form action="{{ route('series.store') }}" method="POST">
                                             {!! csrf_field() !!}
                                             <div class="row">
@@ -44,7 +40,7 @@
                                                     <div class="mb-3">
                                                         <select name="product_types_id" id="product_type"
                                                             class="form-select">
-                                                            <option hidden>Choose Product Type</option>
+                                                            <option value="">Choose Product Type</option>
                                                             @foreach ($product_type as $item)
                                                                 <option value="{{ $item->id }}">{{ $item->name }}
                                                                 </option>
@@ -59,7 +55,7 @@
                                                 <div class=" col-md-6 p-1">
                                                     <div class="mb-3">
                                                         <input type="text" class="form-select1" id="product_series"
-                                                            name="name" value="" required>
+                                                            name="name" value="">
                                                     </div>
                                                     <div class="col-md-12 text-center mt-4">
                                                         <button type="submit" class="btn btn-primary">Submit</button>

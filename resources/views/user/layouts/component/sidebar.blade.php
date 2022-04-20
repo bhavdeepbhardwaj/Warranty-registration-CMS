@@ -17,7 +17,7 @@
 
         <div class="ec-brand">
             <a href="/" title="AVITA India">
-                {{-- <img class="ec-brand-icon" src="{{ asset('assets/img/logo/AVITA-logo.png ') }}" alt="" /> --}}
+                <img class="ec-brand-icon" src="{{ asset('assets/img/logo/AVITA-logo.png ') }}" alt="" />
                 <img class="ec-brand-name text-truncate" src="{{ asset('assets/img/logo/AVITA-logo.png ') }}" alt="" />
 
             </a>

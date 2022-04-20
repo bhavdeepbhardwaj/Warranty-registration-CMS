@@ -5,96 +5,70 @@
 @stop
 
 @section('css')
-
     <!-- No Extra plugin used -->
-
     <link href="{{ asset('assets/plugins/data-tables/datatables.bootstrap5.min.css') }}" rel='stylesheet'>
     <link href="{{ asset('assets/plugins/data-tables/responsive.datatables.min.css') }}" rel='stylesheet'>
-
-    <style>
-
-    </style>
-
 @endsection
 
 @section('content')
-
-<!-- CONTENT WRAPPER -->
-<div class="ec-content-wrapper">
-    <div class="content">
-        <div class="row">
-            <div class="col-12 p-b-15">
-                <!-- Recent Order Table -->
-                <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
-                    <div class="card-header justify-content-between">
-                        <h2>Customers</h2>
-                        <div class="date-range-report">
-                            <span></span>
+    <!-- CONTENT WRAPPER -->
+    <div class="ec-content-wrapper">
+        <div class="content">
+            <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
+                <div>
+                    <h2>All Customers</h2>
+                    <p class="breadcrumbs"><span><a href="{{ route('admin.home') }}">Home</a></span>
+                        <span><i class="mdi mdi-chevron-right"></i></span>All Customers
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-default">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="responsive-data-table" class="table" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Customer ID</th>
+                                            <th>Customer Name</th>
+                                            <th class="">Email</th>
+                                            <th>Customer Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($user as $user)
+                                            <tr>
+                                                <td>{{ $user->id }}</td>
+                                                <td>
+                                                    <a class="text-dark" href="">{{ $user->name }}</a>
+                                                </td>
+                                                <td class="">{{ $user->email }}</td>
+                                                <td>
+                                                    @if ($user->is_admin == 1)
+                                                        <span class="badge badge-success">Admin</span>
+                                                    @elseif($user->is_admin == 0)
+                                                        <span class="badge bg-primary">Customer</span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body pt-0 pb-5">
-                        <table class="table card-table table-responsive table-responsive-large"
-                            style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Customer ID</th>
-                                    <th>Customer Name</th>
-                                    <th class="d-none d-lg-table-cell">Email</th>
-                                    <th>Customer Status</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($user as $user)
-                                <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>
-                                        <a class="text-dark" href="">{{ $user->name }}</a>
-                                    </td>
-                                    <td class="d-none d-lg-table-cell">{{ $user->email }}</td>
-                                    <td>
-                                        @if (( $user->is_admin ) == 1)
-                                            <span class="badge badge-success">Admin</span>
-                                        @elseif(( $user->is_admin ) == 0)
-                                            <span class="badge bg-primary">Customer</span>
-                                        @endif
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown show d-inline-block widget-dropdown">
-                                            <a class="dropdown-toggle icon-burger-mini" href=""
-                                                role="button" id="dropdown-recent-order1"
-                                                data-bs-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false" data-display="static"></a>
-                                            <ul class="dropdown-menu dropdown-menu-right">
-                                                <li class="dropdown-item">
-                                                    <a href="#">View</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">Remove</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- End Content -->
-</div>
-<!-- End Content Wrapper -->
-
+        <!-- End Content -->
+    </div>
+    <!-- End Content Wrapper -->
 @endsection
 
 @section('js')
-
-
     <!-- Datatables -->
     <script src="{{ asset('assets/plugins/data-tables/jquery.datatables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/data-tables/datatables.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/data-tables/datatables.responsive.min.js') }}"></script>
-
 @endsection

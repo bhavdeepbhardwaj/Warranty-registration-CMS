@@ -71,6 +71,7 @@
                                                 {{ session('success') }}
                                             </div>
                                         @endif
+                                        @include('component.alert')
                                         <form method="POST" action="{{ route('admin.profilesave') }}">
                                             {{ csrf_field() }}
                                             <div class="row mt-2">
@@ -80,16 +81,18 @@
 
                                                     <input type="text" class="form-select1" disabled
                                                         placeholder="First name" value="{{ Auth::user()->name }}"
-                                                        name="name" required>
+                                                        name="name">
                                                 </div>
                                                 <div class="col-md-6"><label class="labels">Last
-                                                        Name</label><input type="text" class="form-select1" value=""
-                                                        placeholder="Last Name" name="last_name" required></div>
+                                                        Name</label><input type="text" class="form-select1"
+                                                        value="{{ $user->last_name }}" placeholder="Last Name"
+                                                        name="last_name"></div>
                                             </div>
                                             <div class="row mt-3">
                                                 <div class="col-md-6"><label class="labels">Mobile
                                                         Number</label><input type="text" class="form-select1"
-                                                        placeholder="Enter phone number" value="" name="phone" required>
+                                                        placeholder="Enter phone number" value="{{ $user->phone }}"
+                                                        name="phone">
                                                 </div>
                                                 <div class="col-md-6"><label class="labels">Email
                                                         ID</label><input type="text" disabled class="form-select1"
@@ -97,28 +100,29 @@
                                                         name="email"></div>
                                                 <div class="col-md-12"><label
                                                         class="labels">Address</label><input type="text"
-                                                        class="form-select1" placeholder="Enter address" value=""
-                                                        name="address" required></div>
+                                                        class="form-select1" placeholder="Enter address"
+                                                        value="{{ $user->address }}" name="address"></div>
                                                 <div class="col-md-6"><label class="labels">Gender</label>
-                                                    <select name="gender" id="gender" class="form-select" required>
+                                                    <select name="gender" id="gender" class="form-select">
                                                         <option value="male">Male</option>
                                                         <option value="female">Female</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6"><label
                                                         class="labels">Postcode</label><input type="text"
-                                                        class="form-select1" placeholder="Postcode" value=""
-                                                        name="postcode" required></div>
+                                                        class="form-select1" placeholder="Postcode"
+                                                        value="{{ $user->postcode }}" name="postcode"></div>
                                             </div>
                                             <div class="row mt-3">
                                                 <div class="col-md-6"><label
                                                         class="labels">Country</label><input type="text"
-                                                        class="form-select1" placeholder="Country" value="" name="country"
-                                                        required></div>
+                                                        class="form-select1" placeholder="Country"
+                                                        value="{{ $user->country }}" name="country"></div>
                                                 <div class="col-md-6"><label
                                                         class="labels">State/Region</label><input type="text"
-                                                        class="form-select1" value="" placeholder="State" name="state"
-                                                        required></div>
+                                                        class="form-select1" value="{{ $user->state }}"
+                                                        placeholder="State" name="state">
+                                                </div>
                                             </div>
                                             <div class="mt-5 text-center"><button class="btn btn-primary profile-button"
                                                     type="submit">Save
@@ -130,48 +134,66 @@
 
                                 <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                                     <div class="tab-pane-content mt-5">
-                                        @if (session('success'))
-                                            <div class="alert alert-success" role="alert">
-                                                {{ session('success') }}
-                                            </div>
-                                        @endif
+                                        @include('component.alert')
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <h4 class="text-right">Password Settings</h4>
                                         </div>
-                                        <form class="" method="POST" action="{{ route('changePassword') }}">
+                                        <form class="" method="POST"
+                                            action="{{ route('changePassword') }}">
                                             {{ csrf_field() }}
                                             <div class="row">
                                                 <div class="form-group col-md-8">
                                                     <label>Type Your Current Password</label>
                                                     <div class="input-group" id="show_hide_password">
                                                         <input class="form-select1" type="password"
-                                                            name="current_password" required>
+                                                            name="current_password" id="current_password">
                                                         <div class="input-group-addon">
                                                             <a href=""><i class="fa fa-eye-slash"
                                                                     aria-hidden="true"></i></a>
                                                         </div>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label text-muted">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                onclick="myFunction()">
+                                                            Show Current Password
+                                                        </label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-8">
                                                     <label>Type Your New Password</label>
                                                     <div class="input-group" id="show_hide_password">
                                                         <input class="form-select1" type="password" name="new_password"
-                                                            required>
+                                                            id="password">
                                                         <div class="input-group-addon">
                                                             <a href=""><i class="fa fa-eye-slash"
                                                                     aria-hidden="true"></i></a>
                                                         </div>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label text-muted">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                onclick="myFunction1()">
+                                                            Show New Password
+                                                        </label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-8">
                                                     <label>Type Your Confirm New Password</label>
                                                     <div class="input-group" id="show_hide_password">
                                                         <input class="form-select1" type="password"
-                                                            name="confirm_password" required>
+                                                            name="confirm_password" id="password_confirmation">
                                                         <div class="input-group-addon">
                                                             <a href=""><i class="fa fa-eye-slash"
                                                                     aria-hidden="true"></i></a>
                                                         </div>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label text-muted">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                onclick="myFunction2()">
+                                                            Show Confirm Password
+                                                        </label>
                                                     </div>
                                                 </div>
                                                 <div class=" text-center">
@@ -193,4 +215,36 @@
     </div>
     <!-- End Content Wrapper -->
 
+@endsection
+
+
+@section('js')
+    <script>
+        function myFunction() {
+            var x = document.getElementById("current_password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+        function myFunction1() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+        function myFunction2() {
+            var x = document.getElementById("password_confirmation");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 @endsection

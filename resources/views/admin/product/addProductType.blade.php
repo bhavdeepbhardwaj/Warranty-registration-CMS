@@ -26,11 +26,7 @@
                             <small>Items marked with an asterisk (*) must be filled out.</small><br><br>
 
                             <div class="col-lg-12">
-                                @if (session('msg'))
-                                    <div class="alert alert-success" role="alert">
-                                        {{ session('msg') }}
-                                    </div>
-                                @endif
+                                @include('component.alert')
                                 <div class="ec-vendor-upload-detail">
                                     <div class="col-md-12 ">
                                         <div class="row">
@@ -43,7 +39,7 @@
                                                     {!! csrf_field() !!}
                                                     <div class="mb-3">
                                                         <input type="text" class="form-select1" id="recipient-name"
-                                                            name="name" value="" required>
+                                                            name="name" value="">
                                                     </div>
                                                     <div class="col-md-12 text-center mt-4">
                                                         <button type="submit" class="btn btn-primary">Submit</button>

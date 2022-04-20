@@ -6,10 +6,10 @@
         <!-- search form -->
         <div class="search-form d-lg-inline-block">
             <div class="input-group">
-                <input type="text" name="query" id="search-input" class="form-control" placeholder="search.." autofocus
+                <input type="hidden" name="query" id="search-input" class="form-control" placeholder="search.." autofocus
                     autocomplete="off" />
-                <button type="button" name="search" id="search-btn" class="btn btn-flat">
-                    <i class="mdi mdi-magnify"></i>
+                <button type="hidden" name="search" id="search-btn" class="btn btn-flat">
+                    {{-- <i class="mdi mdi-magnify"></i> --}}
                 </button>
             </div>
             <div id="search-results-container">

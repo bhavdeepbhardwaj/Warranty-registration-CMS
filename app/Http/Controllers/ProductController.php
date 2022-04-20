@@ -48,68 +48,125 @@ class ProductController extends Controller
 
     public function productTypestore(Request $request)
     {
-        // dd($request->all());
-        $request = Product_type::create([
-            'name' => $request->name
-        ]);
+        try {
+            // dd($request->all());
+            $this->validate($request, [
+                'name'                  => 'required',
+            ]);
 
-        $request->save();
-        return Redirect::back()->with('msg', 'New Product Type Add');
+            $request = Product_type::create([
+                'name'                  => $request->name
+            ]);
+
+            $request->save();
+
+            return Redirect::back()->with('msg', 'New Product Type Add');
+        } catch (ModelNotFoundException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
+        return redirect()->back()->with("error", "Something is wrong !");
     }
 
     public function productSeries()
     {
-        $product_type = Product_type::get();
+        try {
+            // dd($request->all());
+            $product_type = Product_type::get();
+        } catch (ModelNotFoundException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
         return view('admin.product.addSeries', compact('product_type'));
     }
 
     public function productSeriesstore(Request $request)
     {
-        // dd($request->all());
-        $form = Product::create([
-            'product_types_id' => $request->product_types_id,
-            'name' => $request->name
-        ]);
+        try {
+            $this->validate($request, [
+                'product_types_id'      => 'required',
+                'name'                  => 'required',
+            ]);
 
-        $form->save();
-        return Redirect::back()->with('msg', 'New Product Series Add');
+            $form = Product::create([
+                'product_types_id'      => $request->product_types_id,
+                'name'                  => $request->name
+            ]);
+
+            // dd($form);
+
+            $form->save();
+            return Redirect::back()->with('msg', 'New Product Series Add');
+        } catch (ModelNotFoundException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
+        return redirect()->back()->with("error", "Something is wrong !");
     }
 
     public function productModelsCreate()
     {
-        $data['product_type'] = Product_type::get(["name", "id"]);
+        try {
+            $data['product_type'] = Product_type::get(["name", "id"]);
+        } catch (ModelNotFoundException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
         return view('admin.product.addModels', $data);
     }
 
     public function productModelsStore(Request $request)
     {
         // dd($request->all());
-        $form = product_model::create([
-            'products_id' => $request->products_id,
-            'model_number' => $request->model_number
-        ]);
+        try {
+            $this->validate($request, [
+                'products_id'                => 'required',
+                'model_number'               => 'required',
+            ]);
 
-        $form->save();
-        return Redirect::back()->with('msg', 'New Product Model Add');
+            $form = product_model::create([
+                'products_id' => $request->products_id,
+                'model_number' => $request->model_number
+            ]);
+
+            // dd($form);
+
+            $form->save();
+            return Redirect::back()->with('msg', 'New Product Model Add');
+        } catch (ModelNotFoundException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
+        return redirect()->back()->with("error", "Something is wrong !");
     }
 
     public function productNumberCreate()
     {
-        $data['product_type'] = Product_type::get(["name", "id"]);
+        try {
+            $data['product_type'] = Product_type::get(["name", "id"]);
+        } catch (ModelNotFoundException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
         return view('admin.product.addProductNumber', $data);
     }
 
     public function productNumberStore(Request $request)
     {
         // dd($request->all());
-        $form = product_number::create([
-            'product_model_id'  => $request->product_model_id,
-            'product_number'    => $request->product_number,
-            'titleName'         => $request->titleName
-        ]);
+        try {
+            $this->validate($request, [
+                'product_model_id'                => 'required',
+                'product_number'               => 'required',
+                'titleName'               => 'required',
+            ]);
 
-        $form->save();
-        return Redirect::back()->with('msg', 'New Product Number & Product Configuration');
+            $form = product_number::create([
+                'product_model_id'  => $request->product_model_id,
+                'product_number'    => $request->product_number,
+                'titleName'         => $request->titleName
+            ]);
+
+            $form->save();
+            return Redirect::back()->with('msg', 'New Product Number & Product Configuration');
+        } catch (ModelNotFoundException $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+        }
+        return redirect()->back()->with("error", "Something is wrong !");
     }
 
     public function productConfigurationCreate()
@@ -120,7 +177,7 @@ class ProductController extends Controller
 
     public function productConfigurationStore(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $form = product_number::create([
             'product_model_id' => $request->product_model_id,
             'product_number' => $request->product_number,

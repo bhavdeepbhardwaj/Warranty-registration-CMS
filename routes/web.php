@@ -76,6 +76,9 @@ Route::post('/getproductConfiguration', [AdminController::class, 'getproductConf
 // Admin
 Route::get('admin', [AdminController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
+Route::get('/get-Warranty_extend-chart-data', [ChartDataWarrantyExtendController::class, 'getMonthlyWarrantyExtendData']);
+Route::get('/get-Warranty_registration-chart-data', [ChartDataWarrantyRegistrationController::class, 'getMonthlywarrantyRegistrationData']);
+
 // Admin Profile
 Route::get('admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 
